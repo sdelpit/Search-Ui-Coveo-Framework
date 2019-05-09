@@ -1,0 +1,69 @@
+@import 'Variables';
+@import './mixins/mediaQuery';
+.CoveoSearchbox {
+  @include display(flex);
+
+  &.coveo-inline {
+    overflow: hidden;
+    .magic-box {
+      overflow: visible;
+    }
+  }
+  .CoveoSearchButton {
+    z-index: 2;
+    border-top-right-radius: $default-border-radius;
+    border-bottom-right-radius: $default-border-radius;
+  }
+  .magic-box {
+    @include flex-grow(1);
+    @include defaultRoundedBorder();
+    .magic-box-clear-svg {
+      width: 15px;
+      height: 15px;
+      color: $color-greyish-teal-blue;
+    }
+    .magic-box-clear:before {
+      border-left: none;
+    }
+    .magic-box-clear .magic-box-icon:before {
+      content: '';
+    }
+    .magic-box-input {
+      border-radius: $default-border-radius;
+    }
+    .magic-box-input > input {
+      color: $color-blueish-gray;
+    }
+  }
+}
+
+.CoveoSettings ~ .CoveoSearchbox {
+  margin-right: 76px;
+}
+
+.CoveoSearchInterface.coveo-waiting-for-query {
+  .CoveoSearchbox {
+    margin: 0;
+    @include smallScreenWidth {
+      margin: 0 20px;
+    }
+  }
+}
+
+.magic-box,
+.magic-box.magic-box-hasFocus {
+  .magic-box-input {
+    .magic-box-underlay {
+      .magic-box-ghost-text {
+        display: none;
+      }
+    }
+  }
+}
+
+.coveo-query-syntax-disabled {
+  &.magic-box .magic-box-input .magic-box-underlay span,
+  .magic-box-highlight-container {
+    display: none;
+  }
+}

@@ -1,0 +1,47 @@
+@import 'mixins/breadcrumb';
+@import 'mixins/mediaQuery';
+
+.CoveoBreadcrumb {
+  padding: 10px 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: $default-border;
+  @include display(flex);
+  @include align-items(flex-start);
+}
+
+.coveo-no-results .CoveoBreadcrumb {
+  text-align: left;
+}
+
+.coveo-breadcrumb-clear-all {
+  @include linkButton();
+  @include flex-shrink(0);
+
+  display: inline-block;
+  font-size: $font-size-smaller;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.coveo-breadcrumb-items {
+  padding-bottom: 10px;
+  display: inline-block;
+  @include flex-grow(1);
+}
+
+.coveo-breadcrumb-item {
+  margin: 5px 0;
+}
+
+@include smallScreenWidth() {
+  .CoveoBreadcrumb {
+    padding: 10px;
+  }
+  .coveo-breadcrumb-items {
+    padding-bottom: 0;
+  }
+  .coveo-breadcrumb-item:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
