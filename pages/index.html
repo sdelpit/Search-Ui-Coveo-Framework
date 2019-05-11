@@ -9,9 +9,13 @@
   <script class="coveo-script" src="js/CoveoJsSearch.Lazy.js"></script>
   <script src="js/templates/templates.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      Coveo.SearchEndpoint.configureSampleEndpointV2()
-      Coveo.init(document.body);
+    document.addEventListener("DOMContentLoaded", () => {
+      var root = document.body;
+      Coveo.SearchEndpoint.endpoints["default"] = new Coveo.SearchEndpoint({
+        restUri: "https://platform.cloud.coveo.com/rest/search",
+        accessToken: "xx7cf704af-6b15-4c02-a1c9-d888b9a4238d"
+      });
+      Coveo.init(root);
     })
   </script>
 </head>
